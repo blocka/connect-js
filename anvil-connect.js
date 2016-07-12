@@ -7,8 +7,8 @@ const CryptoJS = require('crypto-js')
 
 const Anvil = {}
 
-let issuer, jwk, params, display
-let session = {}
+var issuer, jwk, params, display
+var session = {}
 
 /**
  * Extend
@@ -290,7 +290,7 @@ Anvil.headers = headers
 function request (config) {
   config.headers = this.headers(config.headers)
   config.crossDomain = true
-  return fetch(config.url, config).then(r=>r.json())
+  return fetch(config.url, config).then(function(r) { return r.json()})
 }
 
 Anvil.request = request
@@ -314,7 +314,7 @@ Anvil.userInfo = userInfo
  */
 
 function callback (response) {
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject) {
     if (response.error) {
       // clear localStorage/cookie/etc
       Anvil.sessionState = response.session_state
@@ -557,7 +557,7 @@ function getKeys () {
     method: 'GET',
     mode: 'cors'
   })
-  .then(response => response.json() )
+  .then(function(response) { return response.json()} )
   .then(success)
   .catch(failure)
 }
