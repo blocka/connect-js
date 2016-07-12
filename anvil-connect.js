@@ -5,6 +5,7 @@ const base64url = require('base64url')
 const CryptoJS = require('crypto-js')
 'use strict'
 
+const Anvil = (function() {
 const Anvil = {}
 
 var issuer, jwk, params, display
@@ -570,6 +571,9 @@ Anvil.getKeys = getKeys
 
 Anvil.deserialize()
 
+return Anvil;
+
+})();
 /**
  * Export
  */
